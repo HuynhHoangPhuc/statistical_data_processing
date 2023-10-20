@@ -41,8 +41,15 @@ def stats_median_with_norm(vec: np.ndarray, m0: float, kind: str, level: float) 
 
 
 if __name__ == '__main__':
-    data = np.loadtxt('data.txt', delimiter=' ')
-    muy0 = 2000
+    # data = np.loadtxt('data.txt', delimiter=' ')
+    # muy0 = 2000
+
+    data = np.array([7.91, 7.85, 6.82, 8.01, 7.46, 6.95, 7.05, 7.35, 7.25, 7.42])
+    muy0 = 7.0
+
+    # data = np.array([8.32, 8.05, 8.93, 8.65, 8.25, 8.46, 8.52, 8.35, 8.36, 8.41, 8.42, 8.30, 8.71,
+    #                  8.75, 8.60, 8.83, 8.50, 8.38, 8.29, 8.46])
+    # muy0 = 8.5
 
     selection = False
     temp = data - muy0
@@ -51,6 +58,6 @@ if __name__ == '__main__':
         selection = bool(True if input("Normal Distribution ? (y/n): ") == "y" else False)
 
     if selection:
-        print(stats_median_with_norm(data, 2000, '=', 0.05))
+        print(stats_median_with_norm(data, muy0, '=', 0.05))
     else:
-        print(stats_median(data, 2000, '=', 0.05))
+        print(stats_median(data, muy0, '!=', 0.05))
