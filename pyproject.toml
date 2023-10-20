@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "statistical-data-processing"
+version = "0.1.0"
+description = ""
+authors = ["Huynh Hoang Phuc <62494021+HuynhHoangPhuc@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+numpy = "^1.26.1"
+pyarrow = "^13.0.0"
+matplotlib = "^3.8.0"
+pandas = "^2.1.1"
+seaborn = "^0.13.0"
+scipy = "^1.11.3"
+statsmodels = "^0.14.0"
+scikit-learn = "^1.3.1"
+jupyter = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
