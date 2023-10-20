@@ -16,7 +16,7 @@ def stats_median(vec: np.ndarray, m0: float, kind: str, level: float) -> tuple[f
     elif kind == '>':
         p_value = p_value
     else:
-        p_value = 2 * (1 - p_value) if sign.sum() < n / 2 else 2 * p_value
+        p_value = 2 * (1 - p_value) if r < n / 2 else 2 * p_value
 
     return p_value, f'm {kind} m0', 'Reject' if p_value < level else 'Not reject'
 
@@ -28,14 +28,14 @@ def stats_median_with_norm(vec: np.ndarray, m0: float, kind: str, level: float) 
     n = np.size(sign)
     r = sign.sum()
     z = (r - 0.5 * n) / (0.5 * math.sqrt(n))
-    p_value = stats.norm.cdf(z, 0.5 * n, 0.25 * n)
+    p_value = stats.norm.cdf(z)
 
     if kind == '<':
         p_value = p_value
     elif kind == '>':
         p_value = 1 - p_value
     else:
-        p_value = 2 * (1 - p_value) if sign.sum() < n / 2 else 2 * p_value
+        p_value = 2 * (1 - stats.norm.cdf(abs(z)))
 
     return p_value, f'm {kind} m0', 'Reject' if p_value < level else 'Not reject'
 
